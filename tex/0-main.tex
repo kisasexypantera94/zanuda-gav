@@ -3,6 +3,29 @@
 % 1. Стиль и язык
 \documentclass[utf8x, 12pt]{G7-32} % Стиль (по умолчанию будет 14pt)
 
+\usepackage{totcount}
+
+\newtotcounter{citnum} %From the package documentation
+\def\oldbibitem{} \let\oldbibitem=\bibitem
+\def\bibitem{\stepcounter{citnum}\oldbibitem}
+
+\usepackage{etoolbox}
+
+\newcounter{totfigures}
+
+\providecommand\totfig{}
+
+\makeatletter
+\AtEndDocument{%
+  \addtocounter{totfigures}{\value{figure}}%
+  \immediate\write\@mainaux{%
+    \string\gdef\string\totfig{\number\value{totfigures}}%
+  }%
+}
+\makeatother
+
+\pretocmd{\chapter}{\addtocounter{totfigures}{\value{figure}}\setcounter{figure}{0}}{}{}
+
 
 % Остальные стандартные настройки убраны в preamble.inc.tex.
 \include{10-preamble}
@@ -36,6 +59,6 @@
 
 \appendix   % Тут идут приложения
 
-\include{61-appendix}
+% \include{61-appendix}
 
 \end{document}

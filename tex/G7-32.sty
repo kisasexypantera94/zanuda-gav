@@ -40,7 +40,12 @@
            \cyrs\cyro\cyrk\cyrr\cyra\cyrshch\cyre\cyrn\cyri\cyrya}%
 }
 \newcommand\Introduction{%введение
- \chapter{\CYRV\cyrv\cyre\cyrd\cyre\cyrn\cyri\cyre}%
+ \chapter*{\CYRV\cyrv\cyre\cyrd\cyre\cyrn\cyri\cyre}%
+ \addcontentsline{toc}{chapter}{Введение}
+}
+\newcommand\Main{%введение
+%  \chapter*{Основная часть}%
+ \addcontentsline{toc}{chapter}{Основная часть}
 }
 \newcommand\Conclusion{%заключение
  \chapter{\CYRZ\cyra\cyrk\cyrl\cyryu\cyrch\cyre\cyrn\cyri\cyre}%
@@ -139,7 +144,7 @@
   #1
   \vspace{8mm}
 
-\Nir@StageNo~~\Nir@StageTitle 
+\Nir@StageNo~~\Nir@StageTitle
 
 (\Nir@StageType)
 

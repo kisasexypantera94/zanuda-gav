@@ -1,3 +1,13 @@
+\Main
+\hspace{0pt}
+\vfill
+\begin{center}
+ОСНОВНАЯ ЧАСТЬ
+\end{center}
+\vfill
+\hspace{0pt}
+\pagebreak
+
 \chapter{Теоретическая часть}
 \label{cha:ch_1}
 
@@ -146,7 +156,9 @@
 ДПФ применяется к дискретным сигналам и его результатом является дискретный спектр (частоты внутри сигнала).
 
 Формула ДПФ:
-$$X(n) = \sum_{k=0}^{N-1} x(k) \times e^{-i \frac{2 \pi n k}{N}}$$,
+\begin{equation}
+X(n) = \sum_{k=0}^{N-1} x(k) \times e^{-i \frac{2 \pi n k}{N}},
+\end{equation}
 где $N$ -- размер окна (количество семплов),
 $X(n)$ -- $n$-ый диапазон частот,
 $x(k)$ -- $k$-ый семпл сигнала
@@ -228,7 +240,10 @@ $x(k)$ -- $k$-ый семпл сигнала
     $n$ -- количество временных диапазонов.
     \item Собрать контекстные фреймы полученной спектрограммы.
     Фреймы рассчитываются следующим образом:
-    $$frame_i = V_{i-w}...V_{i+w}$$, где $V_i$ -- столбец спектрограммы, $w$ -- количество столбцов контекста.\\
+    \begin{equation}
+    frame_i = V_{i-w}...V_{i+w}
+    \end{equation}
+    , где $V_i$ -- столбец спектрограммы, $w$ -- количество столбцов контекста.\\
     Результат этапа: матрица $Frames \in \mathbb{R}^{Bw \times n}$
     \begin{figure}[H]
         \begin{center}
@@ -237,7 +252,7 @@ $x(k)$ -- $k$-ый семпл сигнала
         \end{center}
     \end{figure}
     \item Применить к фреймам спектрально-временные фильтры. Фильтры представляют собой
-    $N \times Bw$ матрицу и расситываются c помощью алгоритма обучения без учителя
+    $N \times Bw$ матрицу и рассчитываются c помощью алгоритма обучения без учителя
     путем решения задачи оптимизации.\\
     Результат этапа: матрица признаков $Features \in \mathbb{R}^{N \times n}$.
     \begin{figure}[H]
@@ -252,9 +267,11 @@ $x(k)$ -- $k$-ый семпл сигнала
             \caption{Матрица признаков}
         \end{minipage}
     \end{figure}
-    \item Посчитать дельту -- изменение признаков в течение промежутка $T$.
+    \item Посчитать дельту -- изменение признаков в течение промежутка времени $T$.
     Дельта рассчитывается по формуле:
-    $$\Delta_i = feature_i - feature_{i+T}$$
+    \begin{equation}
+    \Delta_i = feature_i - feature_{i+T}
+    \end{equation}
     \begin{figure}[H]
         \begin{center}
             \includegraphics[scale=0.6]{inc/img/delta.png}
@@ -262,7 +279,9 @@ $x(k)$ -- $k$-ый семпл сигнала
         \end{center}
     \end{figure}
     \item Наложить функцию порога и упаковать результат в хешпринты:
-    $$hashprint_i = intN(\Delta_i > 0)$$
+    \begin{equation}
+    hashprint_i = intN(\Delta_i > 0)
+    \end{equation}
     \begin{figure}[H]
         \begin{center}
             \includegraphics[scale=0.6]{inc/img/thres.png}
@@ -311,8 +330,10 @@ $x(k)$ -- $k$-ый семпл сигнала
 такой отступ $offset$, что $fragment \approx original[offset..]$.
 
 Таким образом, задача обретает вид:
-$$ans = \argmin_{original, offset}d(fragment, original[offset..])$$,
-где $d$ -- некоторая метрика. Проще говоря, мы хотим минимизировать расстояние между
+\begin{equation}
+ans = \argmin_{original, offset}d(fragment, original[offset..])
+\end{equation}
+, где $d$ -- некоторая метрика. Проще говоря, мы хотим минимизировать расстояние между
 отрывком и студийным оригиналом. Также стоит отметить, что такой подход подразумевает,
 что музыкант не сильно изменил темп исполнения по сравнению с оригиналом.
 

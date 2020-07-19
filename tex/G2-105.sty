@@ -249,7 +249,7 @@
   %  перенос в словах-с-дефисом
   \lccode`\-=`\-
   \defaulthyphenchar=127
-  
+
   \RequirePackage[english,russian]{babel}
   \RequirePackage[T2A]{fontenc} % T1 по этой же пичине, иначе акробату плохо.
   \RequirePackage[\Gost@encoding]{inputenc}
@@ -268,7 +268,7 @@
   \RequirePackage{fontspec}
   \RequirePackage{polyglossia}
   \RequirePackage{xecyr}
-  \setmainlanguage[spelling=modern]{russian} 
+  \setmainlanguage[spelling=modern]{russian}
   \setotherlanguage{english}
   \defaultfontfeatures{Mapping=tex-text}
   \setmainfont{CMU Serif}
@@ -420,7 +420,7 @@
 \newenvironment{figure*}{\@dblfloat{figure}}{\end@dblfloat}
 
 %  Подпись к рисунку
-\addto\captionsrussian{\def\figurename{{\cyr\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}}}
+\addto\captionsrussian{\def\figurename{{Рис.}}}
 
 % ... допускается нумерация рисунков в пределах раздела
 \newcommand\PicInChapter{%
